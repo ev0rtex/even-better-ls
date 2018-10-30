@@ -14,7 +14,7 @@ esac
 
 $download_method ls_colors_generator.py https://raw.githubusercontent.com/mnurzia/even-better-ls/master/ls_colors_generator.py
 chmod 755 ls_colors_generator.py
-sudo mv ls_colors_generator.py ${install_location}/ls_colors_generator
+sudo cp ls_colors_generator.py ${install_location}/ls_colors_generator
 $download_method ${coreutils_version}.tar.xz https://ftp.gnu.org/gnu/coreutils/${coreutils_version}.tar.xz
 tar -xf ${coreutils_version}.tar.xz
 rm ${coreutils_version}.tar.xz
