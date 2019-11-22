@@ -1,9 +1,9 @@
-COREUTILS_VER=8.30
+COREUTILS_VER=8.31
 
 #
 # Copy over the colors generator
 chmod 755 ls_colors_generator.py
-sudo cp ls_colors_generator.py /usr/bin/ls_colors_generator
+sudo cp ls_colors_generator.py /usr/local/bin/ls_colors_generator
 
 #
 # Cleanup
