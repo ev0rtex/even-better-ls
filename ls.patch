@@ -1,6 +1,6 @@
---- src/ls.c	2017-12-10 18:12:46.000000000 -0700
-+++ src/ls.c	2019-11-22 15:01:35.000000000 -0700
-@@ -4753,21 +4753,15 @@
+--- src/ls.c	2018-06-23 20:12:51.000000000 -0600
++++ src/ls.c	2019-11-22 16:05:18.000000000 -0700
+@@ -4756,21 +4756,15 @@
          }
      }
  
@@ -15,8 +15,8 @@
 -      for (ext = color_ext_list; ext != NULL; ext = ext->next)
 -        {
 -          if (ext->ext.len <= len
--              && STREQ_LEN (name - ext->ext.len, ext->ext.string,
--                            ext->ext.len))
+-              && c_strncasecmp (name - ext->ext.len, ext->ext.string,
+-                                ext->ext.len) == 0)
 -            break;
 -        }
 +  /* Test if NAME has a recognized suffix.  */
@@ -25,18 +25,18 @@
 +  for (ext = color_ext_list; ext != NULL; ext = ext->next)
 +    {
 +      if (ext->ext.len <= len
-+          && STREQ_LEN (name - ext->ext.len, ext->ext.string,
-+                        ext->ext.len))
++          && c_strncasecmp (name - ext->ext.len, ext->ext.string,
++                            ext->ext.len) == 0)
 +        break;
      }
  
    /* Adjust the color for orphaned symlinks.  */
-@@ -4826,6 +4820,9 @@
+@@ -4829,6 +4823,9 @@
    if (print_scontext)
      len += 1 + (format == with_commas ? strlen (f->scontext) : scontext_width);
  
 +  if (print_with_color)
-+	len += 2;
++    len += 2;
 +
    len += quote_name_width (f->name, filename_quoting_options, f->quoted);
  

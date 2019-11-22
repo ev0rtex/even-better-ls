@@ -1,4 +1,4 @@
-COREUTILS_VER=8.29
+COREUTILS_VER=8.30
 
 #
 # Copy over the colors generator
@@ -25,6 +25,6 @@ patch -p0 < ../ls.patch
 ./configure
 make
 for bin in ls dir vdir; do
-    echo "Copying ${bin} to /usr/bin/${bin}-i"
-    sudo cp src/${bin} /usr/bin/${bin}-i
+    echo "Copying ${bin} to /usr/local/bin/${bin}-i"
+    sudo cp src/${bin} /usr/local/bin/${bin}-i
 done
